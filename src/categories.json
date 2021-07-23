@@ -1,0 +1,104 @@
+{
+  "Entertainment": [
+    {
+      "Name": "Books",
+      "code": "10"
+    },
+    {
+      "Name": "Film",
+      "code": "11"
+    },
+    {
+      "Name": "Music",
+      "code": "12"
+    },
+    {
+      "Name": "Musicals & Theatres",
+      "code": "13"
+    },
+    {
+      "Name": "Television",
+      "code": "14"
+    },
+    {
+      "Name": "Video Games",
+      "code": "15"
+    },
+    {
+      "Name": "Board Games",
+      "code": "16"
+    },
+    {
+      "Name": "Comics",
+      "code": "29"
+    },
+    {
+      "Name": "Japanese Anime & Manga",
+      "code": "31"
+    },
+    {
+      "Name": "Cartoon & Animations",
+      "code": "32"
+    }
+  ],
+  "Science": [
+    {
+      "Name": "Mathematics",
+      "code": "19"
+    },
+    {
+      "Name": "Computers",
+      "code": "18"
+    },
+    {
+      "Name": "Gadgets",
+      "code": "30"
+    }
+  ],
+  "Others": [
+    {
+      "Name": "General Knowledge",
+      "code": "9"
+    },
+    {
+      "Name": "Science & Nature",
+      "code": "17"
+    },
+    {
+      "Name": "Mythology",
+      "code": "20"
+    },
+    {
+      "Name": "Sports",
+      "code": "21"
+    },
+    {
+      "Name": "Geography",
+      "code": "22"
+    },
+    {
+      "Name": "History",
+      "code": "23"
+    },
+    {
+      "Name": "Politics",
+      "code": "24"
+    },
+    {
+      "Name": "Art",
+      "code": "25"
+    },
+    {
+      "Name": "Celebrities",
+      "code": "26"
+    },
+    {
+      "Name": "Animals",
+      "code": "27"
+    },
+    {
+      "Name": "Vehicles",
+      "code": "28"
+    }
+  ]
+}
