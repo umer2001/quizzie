@@ -1,26 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { Card, Typography, Radio, Space, Button } from "antd";
-
-interface Question {
-  category: string;
-  correct_answer: string;
-  incorrect_answers: string[];
-  question: string;
-  type: string;
-}
+import { addChoicesAll } from "./utils/utils";
+import { Question, QuestionWithChoices } from "./models";
 
 const QuestionCard = () => {
   const [selected, setSelected] = useState<number | null>(null);
   const [questionIndex, setQuestionIndex] = useState<number | null>(null);
-  const [questions, setQuestions] = useState<Question[]>([]);
+  const [questions, setQuestions] = useState<QuestionWithChoices[]>([]);
 
   useEffect(() => {
     (async () => {
       const res = await fetch("https://opentdb.com/api.php?amount=10");
       const { results } = await res.json();
       const questions: Question[] = results;
-      setQuestions(questions);
+      setQuestions(addChoicesAll(questions));
       setQuestionIndex(0);
+      console.log(questions);
     })();
   }, []);
 
@@ -44,13 +39,11 @@ const QuestionCard = () => {
       >
         <Radio.Group onChange={onChange} value={selected}>
           <Space direction="vertical">
-            {questions[questionIndex].incorrect_answers.map((answer) => (
-              <Radio value={answer}>{answer}</Radio>
+            {questions[questionIndex].choices.map((answer) => (
+              <Radio key={answer} value={answer}>
+                {answer}
+              </Radio>
             ))}
-
-            <Radio value={questions[questionIndex].correct_answer}>
-              {questions[questionIndex].correct_answer}
-            </Radio>
           </Space>
         </Radio.Group>
       </Card>
