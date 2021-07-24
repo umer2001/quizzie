@@ -35,7 +35,13 @@ const QuestionCard = () => {
       bordered={false}
       style={{ backgroundColor: "#fafafa", textAlign: "left" }}
     >
-      <Card title={questions[questionIndex].question}>
+      <Card
+        title={
+          <Title level={5} style={{ whiteSpace: "normal" }}>
+            {questions[questionIndex].question}
+          </Title>
+        }
+      >
         <Radio.Group onChange={onChange} value={selected}>
           <Space direction="vertical">
             {questions[questionIndex].incorrect_answers.map((answer) => (
@@ -67,4 +73,3 @@ const QuestionCard = () => {
 
 export default QuestionCard;
 // TODO: shuffle functionality
-// FIXME: question truncates ac to width of card head
