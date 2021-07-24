@@ -33,7 +33,11 @@ const QuestionCard = () => {
       <Card
         title={
           <Title level={5} style={{ whiteSpace: "normal" }}>
-            {questions[questionIndex].question}
+            <span
+              dangerouslySetInnerHTML={{
+                __html: questions[questionIndex].question,
+              }}
+            ></span>
           </Title>
         }
       >
@@ -65,4 +69,3 @@ const QuestionCard = () => {
 };
 
 export default QuestionCard;
-// TODO: shuffle functionality
