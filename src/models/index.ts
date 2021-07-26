@@ -14,3 +14,22 @@ export interface QuestionWithChoices {
   question: string;
   type: string;
 }
+
+export interface State {
+  playerName: string;
+  score: number;
+  screen: string;
+}
+
+export type ActionsType =
+  | "SET_NAME"
+  | "SCORE_INCREMENT"
+  | "CHANGE_SCREEN"
+  | null;
+
+export interface Action {
+  type: ActionsType;
+  payload?: any;
+}
+
+export type Dispatch = (action: Action) => void;
