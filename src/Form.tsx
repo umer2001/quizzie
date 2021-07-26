@@ -1,4 +1,5 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useContext } from "react";
+import { GlobalDispatchContext } from "./Context/GlobalContext";
 import {
   Row,
   Col,
@@ -10,6 +11,7 @@ import {
 } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { default as categories } from "./categories.json";
+import { APIOptions } from "./models";
 
 interface Category {
   Name: string;
@@ -20,18 +22,13 @@ interface Categories {
   [key: string]: Category[];
 }
 
-interface APIOptions {
-  category?: string;
-  difficulty?: string;
-  quantity: number;
-}
-
 const Form: FC = () => {
   const data: Categories = categories;
   const difficulties: string[] = ["Easy", "Medium", "Hard"];
-  const { Option, OptGroup } = Select;
+  const dispatch = useContext(GlobalDispatchContext);
   const [name, setName] = useState<string>("");
   const [canProceed, setCanProceed] = useState<boolean>(false);
+  const { Option, OptGroup } = Select;
 
   const [options, setOptions] = useState<APIOptions>({
     category: undefined,
@@ -47,14 +44,9 @@ const Form: FC = () => {
   };
 
   const handlesubmit = async () => {
-    const url: string = `https://opentdb.com/api.php?amount=${
-      options.quantity
-    }${options.category ? "&category=" + options.category : ""}${
-      options.difficulty ? "&difficulty=" + options.difficulty : ""
-    }`;
-    const res = await fetch(url);
-    const data = await res.json();
-    console.log(data);
+    dispatch({ type: "SET_NAME", payload: name });
+    dispatch({ type: "SET_QUIZ_OPTIONS", payload: options });
+    dispatch({ type: "CHANGE_SCREEN", payload: "quiz" });
   };
 
   return (
