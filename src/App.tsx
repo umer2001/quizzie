@@ -34,7 +34,7 @@ const App: FC = () => {
               type="primary"
               size="large"
               onClick={() =>
-                dispatch({ type: "CHANGE_SCREEN", payload: "loading" })
+                dispatch({ type: "CHANGE_SCREEN", payload: "form" })
               }
             >
               Start
