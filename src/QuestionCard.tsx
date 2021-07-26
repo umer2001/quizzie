@@ -1,16 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Card, Typography, Radio, Space, Button } from "antd";
+import { GlobalStateContext } from "./Context/GlobalContext";
 import { addChoicesAll } from "./utils/utils";
 import { Question, QuestionWithChoices } from "./models";
+import Loading from "./Loading";
 
 const QuestionCard = () => {
+  const { quizOptions } = useContext(GlobalStateContext);
   const [selected, setSelected] = useState<number | null>(null);
   const [questionIndex, setQuestionIndex] = useState<number | null>(null);
   const [questions, setQuestions] = useState<QuestionWithChoices[]>([]);
 
   useEffect(() => {
     (async () => {
-      const res = await fetch("https://opentdb.com/api.php?amount=10");
+      const url: string = `https://opentdb.com/api.php?amount=${
+        quizOptions.quantity
+      }${quizOptions.category ? "&category=" + quizOptions.category : ""}${
+        quizOptions.difficulty ? "&difficulty=" + quizOptions.difficulty : ""
+      }`;
+      const res = await fetch(url);
       const { results } = await res.json();
       const questions: Question[] = results;
       setQuestions(addChoicesAll(questions));
@@ -64,7 +72,7 @@ const QuestionCard = () => {
       </Button>
     </Card>
   ) : (
-    <Title level={4}>Loading</Title>
+    <Loading />
   );
 };
 
