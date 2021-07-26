@@ -1,6 +1,6 @@
 //TODO: eslint
 
-import { State, Action } from "../models";
+import { State, Action, APIOptions } from "../models";
 
 // eslint-disable-next-line
 export default (state: State, action: Action) => {
@@ -8,11 +8,15 @@ export default (state: State, action: Action) => {
 
   switch (action.type) {
     case "SET_NAME": {
-      console.log("called me");
-
       return {
         ...state,
-        playerName: action.payload,
+        playerName: action.payload as string,
+      };
+    }
+    case "SET_QUIZ_OPTIONS": {
+      return {
+        ...state,
+        quizOptions: action.payload as APIOptions,
       };
     }
     case "SCORE_INCREMENT": {

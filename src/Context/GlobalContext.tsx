@@ -7,6 +7,7 @@ const initialState: State = {
   playerName: "",
   score: 0,
   screen: "initial",
+  quizOptions: { category: undefined, difficulty: undefined, quantity: 10 },
 };
 
 //create context

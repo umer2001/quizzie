@@ -15,14 +15,22 @@ export interface QuestionWithChoices {
   type: string;
 }
 
+export interface APIOptions {
+  category?: string;
+  difficulty?: string;
+  quantity: number;
+}
+
 export interface State {
   playerName: string;
   score: number;
   screen: string;
+  quizOptions: APIOptions;
 }
 
 export type ActionsType =
   | "SET_NAME"
+  | "SET_QUIZ_OPTIONS"
   | "SCORE_INCREMENT"
   | "CHANGE_SCREEN"
   | null;
