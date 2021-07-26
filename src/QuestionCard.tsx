@@ -25,7 +25,7 @@ const QuestionCard = () => {
       setQuestionIndex(0);
       console.log(questions);
     })();
-  }, []);
+  }, [quizOptions]);
 
   const onChange = (e: any) => {
     console.log("radio checked", e.target.value);
