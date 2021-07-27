@@ -41,3 +41,4 @@ export interface Action {
 }
 
 export type Dispatch = (action: Action) => void;
+export type AnswerStatus = "right" | "wrong" | "unknown";
