@@ -7,8 +7,8 @@ const TrackSheet: FC = () => {
   return (
     <div
       style={{
-        padding: "1%",
-        backgroundColor: "rgb(218 218 218)",
+        padding: "5%",
+        backgroundColor: "rgb(250, 250, 250)",
         textAlign: "left",
       }}
     >
