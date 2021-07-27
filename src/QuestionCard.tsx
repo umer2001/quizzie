@@ -1,38 +1,19 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { FC, useState } from "react";
 import { Card, Typography, Radio, Space, Button } from "antd";
-import { GlobalStateContext } from "./Context/GlobalContext";
-import { addChoicesAll } from "./utils/utils";
-import { Question, QuestionWithChoices } from "./models";
-import Loading from "./Loading";
+import { QuestionWithChoices } from "./models";
 
-const QuestionCard = () => {
-  const { quizOptions } = useContext(GlobalStateContext);
+const QuestionCard: FC<{ questions: QuestionWithChoices[] }> = ({
+  questions,
+}) => {
   const [selected, setSelected] = useState<number | null>(null);
-  const [questionIndex, setQuestionIndex] = useState<number | null>(null);
-  const [questions, setQuestions] = useState<QuestionWithChoices[]>([]);
-
-  useEffect(() => {
-    (async () => {
-      const url: string = `https://opentdb.com/api.php?amount=${
-        quizOptions.quantity
-      }${quizOptions.category ? "&category=" + quizOptions.category : ""}${
-        quizOptions.difficulty ? "&difficulty=" + quizOptions.difficulty : ""
-      }`;
-      const res = await fetch(url);
-      const { results } = await res.json();
-      const questions: Question[] = results;
-      setQuestions(addChoicesAll(questions));
-      setQuestionIndex(0);
-      console.log(questions);
-    })();
-  }, [quizOptions]);
+  const [questionIndex, setQuestionIndex] = useState<number>(0);
 
   const onChange = (e: any) => {
     console.log("radio checked", e.target.value);
     setSelected(e.target.value);
   };
   const { Title } = Typography;
-  return questionIndex !== null ? (
+  return (
     <Card
       title={<Title level={3}>Question No : {questionIndex + 1}</Title>}
       bordered={false}
@@ -71,8 +52,6 @@ const QuestionCard = () => {
         Next
       </Button>
     </Card>
-  ) : (
-    <Loading />
   );
 };
 
