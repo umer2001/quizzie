@@ -1,17 +1,28 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useContext } from "react";
 import { Card, Typography, Radio, Space, Button } from "antd";
-import { QuestionWithChoices } from "./models";
+import { GlobalDispatchContext } from "./Context/GlobalContext";
+import { AnswerStatus, QuestionWithChoices } from "./models";
 
-const QuestionCard: FC<{ questions: QuestionWithChoices[] }> = ({
-  questions,
-}) => {
-  const [selected, setSelected] = useState<number | null>(null);
+const QuestionCard: FC<{
+  questions: QuestionWithChoices[];
+  onAnswer: (questionIndex: number, result: AnswerStatus) => void;
+}> = ({ questions, onAnswer }) => {
+  const dispatch = useContext(GlobalDispatchContext);
+  const [selected, setSelected] = useState<string | null>(null);
   const [questionIndex, setQuestionIndex] = useState<number>(0);
 
   const onChange = (e: any) => {
-    console.log("radio checked", e.target.value);
     setSelected(e.target.value);
   };
+
+  const handleNext = () => {
+    const isCorrect = selected === questions[questionIndex].correct_answer;
+    onAnswer(questionIndex, isCorrect ? "right" : "wrong");
+    if (isCorrect) dispatch({ type: "SCORE_INCREMENT" });
+    setQuestionIndex(questionIndex + 1);
+    setSelected(null);
+  };
+
   const { Title } = Typography;
   return (
     <Card
@@ -46,8 +57,10 @@ const QuestionCard: FC<{ questions: QuestionWithChoices[] }> = ({
         style={{
           marginTop: "2%",
         }}
-        disabled={questionIndex === questions.length - 1 ? true : false}
-        onClick={() => setQuestionIndex(questionIndex + 1)}
+        disabled={
+          !selected || (questionIndex === questions.length - 1 ? true : false)
+        }
+        onClick={handleNext}
       >
         Next
       </Button>

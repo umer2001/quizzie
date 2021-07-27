@@ -1,8 +1,11 @@
 import React, { FC } from "react";
 import { Space, Typography } from "antd";
 import StatusBox from "./StatusBox";
+import { AnswerStatus } from "./models";
 
-const TrackSheet: FC = () => {
+const TrackSheet: FC<{ userResponses: AnswerStatus[] }> = ({
+  userResponses,
+}) => {
   const { Title } = Typography;
   return (
     <div
@@ -15,8 +18,8 @@ const TrackSheet: FC = () => {
       <Title level={4}>Question Palette</Title>
 
       <Space size={[8, 16]} wrap>
-        {new Array(20).fill(null).map((_, index) => (
-          <StatusBox key={index} status="unknown" />
+        {userResponses.map((response, index) => (
+          <StatusBox key={index} status={response} />
         ))}
       </Space>
     </div>
