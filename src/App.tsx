@@ -8,8 +8,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import Form from "./Form";
 import Loading from "./Loading";
-import QuestionCard from "./QuestionCard";
-import TrackSheet from "./TrackSheet";
+import Quiz from "./Quiz";
 
 const App: FC = () => {
   const dispatch = useContext(GlobalDispatchContext);
@@ -43,10 +42,7 @@ const App: FC = () => {
         ) : screen === "form" ? (
           <Form />
         ) : screen === "quiz" ? (
-          <>
-            <QuestionCard />
-            <TrackSheet />
-          </>
+          <Quiz />
         ) : (
           <Loading />
         )}
