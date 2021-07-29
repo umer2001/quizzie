@@ -1,5 +1,8 @@
 import React, { FC, useState, useContext, useEffect } from "react";
-import { GlobalStateContext } from "./Context/GlobalContext";
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "./Context/GlobalContext";
 import { Row, Col } from "antd";
 import { addChoicesAll } from "./utils/utils";
 import { AnswerStatus, Question, QuestionWithChoices } from "./models";
@@ -9,6 +12,7 @@ import TrackSheet from "./TrackSheet";
 
 const Quiz: FC = () => {
   const { quizOptions } = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
   const [questions, setQuestions] = useState<QuestionWithChoices[]>([]);
   const [userAnswers, setUserAnswers] = useState<AnswerStatus[]>([]);
 
@@ -24,8 +28,10 @@ const Quiz: FC = () => {
       const questions: Question[] = results;
       setUserAnswers(Array(questions.length).fill("unknown"));
       setQuestions(addChoicesAll(questions));
+      dispatch({ type: "SET_TOTAL_QUESTIONS", payload: questions.length });
       console.log(questions);
     })();
+    // eslint-disable-next-line
   }, [quizOptions]);
 
   return questions.length ? (

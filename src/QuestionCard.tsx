@@ -23,6 +23,10 @@ const QuestionCard: FC<{
     setSelected(null);
   };
 
+  const moveToResult = () => {
+    dispatch({ type: "CHANGE_SCREEN", payload: "result" });
+  };
+
   const { Title } = Typography;
   return (
     <Card
@@ -57,12 +61,14 @@ const QuestionCard: FC<{
         style={{
           marginTop: "2%",
         }}
-        disabled={
-          !selected || (questionIndex === questions.length - 1 ? true : false)
+        disabled={!selected}
+        onClick={
+          questionIndex === questions.length - 1 ? moveToResult : handleNext
         }
-        onClick={handleNext}
       >
-        Next
+        {questionIndex === questions.length - 1
+          ? "Move to Result Screen"
+          : "Next"}
       </Button>
     </Card>
   );

@@ -24,6 +24,7 @@ export interface APIOptions {
 export interface State {
   playerName: string;
   score: number;
+  totalQuestions: number;
   screen: string;
   quizOptions: APIOptions;
 }
@@ -31,6 +32,7 @@ export interface State {
 export type ActionsType =
   | "SET_NAME"
   | "SET_QUIZ_OPTIONS"
+  | "SET_TOTAL_QUESTIONS"
   | "SCORE_INCREMENT"
   | "CHANGE_SCREEN"
   | null;
@@ -42,3 +44,4 @@ export interface Action {
 
 export type Dispatch = (action: Action) => void;
 export type AnswerStatus = "right" | "wrong" | "unknown";
+export type Medal = "Gold" | "Silver" | "Bronze" | "Fail" | null;

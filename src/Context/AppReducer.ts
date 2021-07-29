@@ -3,7 +3,7 @@
 import { State, Action, APIOptions } from "../models";
 
 // eslint-disable-next-line
-export default (state: State, action: Action) => {
+export default (state: State, action: Action): State => {
   console.log(action);
 
   switch (action.type) {
@@ -17,6 +17,12 @@ export default (state: State, action: Action) => {
       return {
         ...state,
         quizOptions: action.payload as APIOptions,
+      };
+    }
+    case "SET_TOTAL_QUESTIONS": {
+      return {
+        ...state,
+        totalQuestions: action.payload as number,
       };
     }
     case "SCORE_INCREMENT": {
