@@ -39,3 +39,7 @@ export function addChoicesAll(
 ): QuestionWithChoices[] {
   return questionsArray.map((question) => addChioces(question));
 }
+
+export function calculatePercentage(obtained: number, outOf: number) {
+  return Math.floor((obtained / outOf) * 100);
+}
