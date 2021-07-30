@@ -25,7 +25,7 @@ const Result: FC = () => {
 
     if (percentage >= 90) {
       setMedal("Gold");
-    } else if (percentage >= 75) {
+    } else if (percentage >= 70) {
       setMedal("Silver");
     } else if (percentage >= 50) {
       setMedal("Bronze");
@@ -36,7 +36,13 @@ const Result: FC = () => {
 
   const { height, width } = useWindowDimensions();
   return medal ? (
-    <div onClick={(e) => party.confetti(e.nativeEvent, { spread: 40 })}>
+    <div
+      onClick={
+        medal === "Fail"
+          ? undefined
+          : (e) => party.confetti(e.nativeEvent, { spread: 40 })
+      }
+    >
       <Confetti
         width={width ? (width > 768 ? width : undefined) : undefined}
         height={height}
