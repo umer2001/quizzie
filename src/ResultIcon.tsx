@@ -18,7 +18,7 @@ const ResultIcon: FC<{ medal: Medal }> = ({ medal }) => {
           : fail
       }
       alt="medal"
-      style={{ width: "100%", marginBottom: "20px" }}
+      style={{ width: "100%", maxHeight: "550px", marginBottom: "20px" }}
     />
   );
 };
