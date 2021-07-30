@@ -77,9 +77,7 @@ const Result: FC = () => {
           </>
         )}
         <Space>
-          <Button
-            onClick={() => dispatch({ type: "CHANGE_SCREEN", payload: "quiz" })}
-          >
+          <Button onClick={() => dispatch({ type: "ATTEMPT_AGAIN" })}>
             Attempt Again
           </Button>
           <Button onClick={() => dispatch({ type: "START_FRESH" })}>

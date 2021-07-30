@@ -37,6 +37,13 @@ export default (state: State, action: Action): State => {
         screen: action.payload,
       };
     }
+    case "ATTEMPT_AGAIN": {
+      return {
+        ...state,
+        screen: "quiz",
+        score: 0,
+      };
+    }
     case "START_FRESH": {
       return {
         playerName: "",

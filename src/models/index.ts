@@ -35,6 +35,7 @@ export type ActionsType =
   | "SET_TOTAL_QUESTIONS"
   | "SCORE_INCREMENT"
   | "CHANGE_SCREEN"
+  | "ATTEMPT_AGAIN"
   | "START_FRESH"
   | null;
 
