@@ -4,7 +4,6 @@ import {
   GlobalDispatchContext,
 } from "./Context/GlobalContext";
 import { Button, Typography } from "antd";
-import logo from "./images/logo.svg";
 import "./App.css";
 import Form from "./Form";
 import Loading from "./Loading";
