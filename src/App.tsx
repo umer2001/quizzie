@@ -10,6 +10,7 @@ import Form from "./Form";
 import Loading from "./Loading";
 import Quiz from "./Quiz";
 import Result from "./Result";
+import Logo from "./Logo";
 
 const App: FC = () => {
   const dispatch = useContext(GlobalDispatchContext);
@@ -22,7 +23,7 @@ const App: FC = () => {
       <header className="App-header">
         {screen === "initial" ? (
           <>
-            <img src={logo} className="App-logo" alt="logo" />
+            <Logo />
             <Title level={2}>Quizzie!!</Title>
             <Text>
               A quiz app that can test you knowledge on different subjects.

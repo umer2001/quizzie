@@ -13,9 +13,14 @@ body {
   pointer-events: none;
 }
 
+#Question-markr {
+  transform-box: fill-box;
+  transform-origin: top;
+}
+
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  #Question-markr {
+    animation: Question-mark-hang infinite 3s alternate-reverse;
   }
 }
 
@@ -33,11 +38,11 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes Question-mark-hang {
   from {
-    transform: rotate(0deg);
+    transform: rotate(-15deg);
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(15deg);
   }
 }
