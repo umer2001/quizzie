@@ -47,7 +47,7 @@ const Result: FC = () => {
         {medal !== "Fail" ? (
           <>
             <p>
-              Congratulations {playerName} 😃, you have socored{" "}
+              Congratulations <b>{playerName}</b> 😃, you have socored{" "}
               <b>{percentage}%</b> in this quiz
             </p>
             <p>
@@ -57,7 +57,9 @@ const Result: FC = () => {
           </>
         ) : (
           <>
-            <p>Sorry {playerName}, we don't have good news for you 😔</p>
+            <p>
+              Sorry <b>{playerName}</b>, we don't have good news for you 😔
+            </p>
             <p>
               You have failed to passed the quiz as you need to score a minimum
               of <b>50%</b> where as you have socred <b>{percentage}%</b>
