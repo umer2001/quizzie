@@ -25,10 +25,23 @@ const App: FC = () => {
             <img src={logo} className="App-logo" alt="logo" />
             <Title level={2}>Quizzie!!</Title>
             <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Dignissimos autem eveniet rem, facilis deleniti eum consequuntur
-              molestiae. Perspiciatis aut nihil inventore porro aperiam, iure ea
-              ratione non harum ab ullam!
+              A quiz app that can test you knowledge on different subjects.
+              <br />
+              <Text strong style={{ float: "left" }}>
+                Rules
+              </Text>
+              <br />
+              <ul style={{ textAlign: "left" }}>
+                <li>
+                  You will be given choice to select subject and quanitity of
+                  questions.
+                </li>
+                <li>Each correct answer will add 1 point to your score.</li>
+                <li>
+                  you are required to score a minimum of <b>50%</b> in oreder to
+                  pass.
+                </li>
+              </ul>
             </Text>
             <Button
               type="primary"
