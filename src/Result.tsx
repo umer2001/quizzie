@@ -4,7 +4,7 @@ import {
   GlobalDispatchContext,
 } from "./Context/GlobalContext";
 import useWindowDimensions from "./hooks/useWindowDimensions";
-import { Card, Button } from "antd";
+import { Card, Space, Button } from "antd";
 import Confetti from "react-confetti";
 import party from "party-js";
 import ResultIcon from "./ResultIcon";
@@ -76,11 +76,16 @@ const Result: FC = () => {
             </p>
           </>
         )}
-        <Button
-          onClick={() => dispatch({ type: "CHANGE_SCREEN", payload: "quiz" })}
-        >
-          Attempt Again
-        </Button>
+        <Space>
+          <Button
+            onClick={() => dispatch({ type: "CHANGE_SCREEN", payload: "quiz" })}
+          >
+            Attempt Again
+          </Button>
+          <Button onClick={() => dispatch({ type: "START_FRESH" })}>
+            Start Fresh
+          </Button>
+        </Space>
       </Card>
     </div>
   ) : (

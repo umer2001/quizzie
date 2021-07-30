@@ -37,6 +37,19 @@ export default (state: State, action: Action): State => {
         screen: action.payload,
       };
     }
+    case "START_FRESH": {
+      return {
+        playerName: "",
+        score: 0,
+        totalQuestions: 0,
+        screen: "initial",
+        quizOptions: {
+          category: undefined,
+          difficulty: undefined,
+          quantity: 10,
+        },
+      };
+    }
     default: {
       return state;
     }

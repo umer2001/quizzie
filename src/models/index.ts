@@ -35,6 +35,7 @@ export type ActionsType =
   | "SET_TOTAL_QUESTIONS"
   | "SCORE_INCREMENT"
   | "CHANGE_SCREEN"
+  | "START_FRESH"
   | null;
 
 export interface Action {
