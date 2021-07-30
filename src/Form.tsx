@@ -106,7 +106,7 @@ const Form: FC = () => {
           <Frm.Item label="No of questions">
             <InputNumber
               placeholder="10"
-              min={1}
+              min={10}
               max={100}
               style={{
                 width: "55px",
