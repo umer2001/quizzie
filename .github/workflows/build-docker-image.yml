@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build AND PUSH Docker Image
 
 # Controls when the workflow will run
 on:
@@ -40,4 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/quizzie:latest
+          tags: ${{ github.repository }}:latest
